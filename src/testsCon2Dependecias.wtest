@@ -1,0 +1,46 @@
+import rodado.*
+test "test deportes" {
+	var deportes = new Dependencia(empleado = 45)
+	var cachito = new Corsa(color = rojo)
+	var cachito1 = new Corsa(color = azul)
+	var cachito2 = new Corsa(color = verde)
+	var cachito3 = new Kwid(tieneTanqueAdicional = true)
+	var cachito4 = new AutoEspecial(peso = 1200, capacidad = 5, velocidadMaxima = 160, color = beige)
+	
+	
+	deportes.agregarFlota(cachito)
+	deportes.agregarFlota(cachito1)
+	deportes.agregarFlota(cachito2)
+	deportes.agregarFlota(cachito3)
+	deportes.agregarFlota(cachito4)
+	
+	assert.equals(6450,deportes.pesoTotalFlota())
+	assert.that(deportes.estaBienEquipado())
+	assert.equals(7,deportes.capacidadTotalEnColor(azul))
+	assert.equals(beige,deportes.colorDelRodadoMasRapido())
+	assert.equals(25,deportes.capacidadFaltante())
+	assert.that(deportes.esGrande())
+}
+
+test "test comercio"{
+	var cachito = new Corsa(color = rojo)
+	var deportes = new Dependencia(empleado = 31)
+	var cachito1 = new Kwid(tieneTanqueAdicional = true)
+	var cachito2 = new Kwid(tieneTanqueAdicional = true)
+	var cachito3 = new Kwid(tieneTanqueAdicional = false)
+	trafic.interior(interiorPopular)
+	trafic.motor(motorBataton)
+	
+	deportes.agregarFlota(cachito)
+	deportes.agregarFlota(cachito1)
+	deportes.agregarFlota(cachito2)
+	deportes.agregarFlota(cachito3)
+	deportes.agregarFlota(trafic)
+	
+	assert.equals(10700,deportes.pesoTotalFlota())
+	assert.notThat(deportes.estaBienEquipado())
+	assert.equals(10,deportes.capacidadTotalEnColor(azul))
+	assert.equals(rojo,deportes.colorDelRodadoMasRapido())
+	assert.equals(5,deportes.capacidadFaltante())
+	assert.notThat(deportes.esGrande())
+}
